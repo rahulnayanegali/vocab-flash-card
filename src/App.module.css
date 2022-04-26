@@ -1,0 +1,19 @@
+.header {
+    text-align: center;
+    margin: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.form {
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.inputMeaning {
+    width: 200px;
+}
