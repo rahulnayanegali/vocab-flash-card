@@ -14,6 +14,7 @@ function App() {
         meaning,
         created: Timestamp.now()
       })
+      return true;
     } catch (err) {
       alert(err)
     }
