@@ -12,6 +12,10 @@
     display:table-cell; vertical-align:middle
 }
 
+.flashCardContainer {
+    -webkit-tap-highlight-color: transparent;
+}
+
 section {
     padding: 10px;
     display: flex;

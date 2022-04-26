@@ -56,7 +56,7 @@ export default function FlashCardContainer() {
         })
     }, [])
 
-    return <section>
+    return <section className={classes.flashCardContainer}>
         {
             Object.keys(words).map(vocab => <FlashCard key={vocab} vocab={words[vocab]} onCardClick={handleClick} />)
         }
