@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from './App.module.css'
 
 export default function FormFlashCard({ onSubmit }) {

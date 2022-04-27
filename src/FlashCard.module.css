@@ -30,15 +30,23 @@ section {
     text-transform: capitalize;
 }
 
+.speakerBtn {
+    background: transparent;
+    border: 1px solid transparent;
+}
+
 .wordContainer {
     width: 100%;
     display: flex;
     column-gap: 10px;
     justify-content: center;
     text-transform: capitalize;
+    align-items: baseline;
+    margin-bottom: 16px;
 }
 
 .speaker {
     width: 20px;
     cursor: pointer;
+    height: max-content;
 }
