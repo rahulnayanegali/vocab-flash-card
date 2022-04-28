@@ -7,11 +7,11 @@ import {db} from './firebase'
 import {collection, addDoc, Timestamp} from 'firebase/firestore'
 
 function App() {
-  const handleSubmit = async ({word, meaning}) => {
+  const handleSubmit = async ({word, meanings}) => {
     try {
       await addDoc(collection(db, 'vocabs'), {
         word,
-        meaning,
+        meanings,
         created: Timestamp.now()
       })
       return true;
