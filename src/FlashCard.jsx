@@ -9,7 +9,7 @@ import { db } from './firebase'
 
 function FlashCard({ vocab, onCardClick }) {
     const { speak } = useSpeechSynthesis();
-    const { word, meaning } = vocab;
+    const { word, meaning, meanings } = vocab;
 
     const handleCardClick = (e) => {
         e.preventDefault();
@@ -22,11 +22,15 @@ function FlashCard({ vocab, onCardClick }) {
             <div className={`${classes.card} ${classes.frontface}`} onClick={handleCardClick}>
                 <div className={classes.vocab}>
                     <div className={classes.wordContainer}>
-                        <button className={classes.speakerBtn} onClick={() => speak({ text: word })}><img className={classes.speaker} src={'./Speaker_Icon.svg'} /></button>
+                        <button className={classes.speakerBtn} onClick={() => speak({ text: word })}><img className={classes.speaker} src={window.location.origin + '/images/Speaker_Icon.svg'} /></button>
                         <h1 >{word}</h1>
                     </div>
                     <p className={classes.meaningParent} style={vocab?.state ? { visibility: "unset" } : { visibility: "hidden" }}>
-                        Meaning: <span className={classes.meaning}><em>{meaning}</em></span>
+                        Meaning: <span className={classes.meaning}>
+                            {
+                                meanings ? <em>{meanings.join(', ')}</em> : <em>{meaning}</em>
+                            }
+                            </span>
                     </p>
                 </div>
             </div>
@@ -56,7 +60,7 @@ export default function FlashCardContainer() {
         })
     }, [])
 
-    return <section className={classes.flashCardContainer}>
+return <section className={classes.flashCardContainer}>
         {
             Object.keys(words).map(vocab => <FlashCard key={vocab} vocab={words[vocab]} onCardClick={handleClick} />)
         }
