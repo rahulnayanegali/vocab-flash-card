@@ -6,6 +6,12 @@ html {
     margin: 20px;
     font-size: 3rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    row-gap: 20px;
 }
 
 .form {
@@ -17,6 +23,24 @@ html {
     padding: 10px;
 }
 
+.button {
+    border-radius: 5px;
+    font-size: 17px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 6px 18px;
+    border: none;
+    font-weight: bold;
+    background-color: #DDDDDD;
+}
 .inputMeaning {
     width: 200px;
+    border-radius: 5px;
+    font-size: 17px;
+    border: 2px solid #DDDDDD;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 6px 18px;
+}
+
+.colorPallete {
+    display: flex;
 }

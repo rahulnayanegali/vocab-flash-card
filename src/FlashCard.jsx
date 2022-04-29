@@ -8,7 +8,7 @@ import { db } from './firebase'
 import ToggleButton from "./ToggleButton";
 
 
-function FlashCard({ vocab, onCardClick }) {
+function FlashCard({ vocab, onCardClick, markColor }) {
     const { speak } = useSpeechSynthesis();
     const { word, meaning, meanings } = vocab;
     const [ checked, setChecked ] = useState(false);
@@ -27,7 +27,7 @@ function FlashCard({ vocab, onCardClick }) {
     return (
         <>
             <div className={`${classes.card} ${classes.frontface}` } onClick={handleCardClick}>
-                <div className={classes.vocab} style={checked ? {backgroundColor: '#C3E5AE'} : {}}>
+                <div className={classes.vocab} style={checked ? {backgroundColor: markColor} : {}}>
                 <div className={classes.toggle}><ToggleButton checked={checked} onChecked={handleChecked}   /></div>
                     <div className={classes.wordContainer} >
                         <button className={classes.speakerBtn} onClick={() => speak({ text: word })}><img className={classes.speaker} src={window.location.origin + '/images/Speaker_Icon.svg'} /></button>
@@ -47,7 +47,7 @@ function FlashCard({ vocab, onCardClick }) {
     )
 }
 
-export default function FlashCardContainer() {
+export default function FlashCardContainer({getVocabslength, markColor}) {
     const [words, setVocabs] = useState([])
 
     const handleClick = (vocab) => {
@@ -68,9 +68,14 @@ export default function FlashCardContainer() {
         })
     }, [])
 
+    useEffect(() => {
+        const vocabsLength = Object.keys(words).length;
+        vocabsLength && getVocabslength(vocabsLength);
+    }, [words])
+
 return <section className={classes.flashCardContainer}>
         {
-            Object.keys(words).map(vocab => <FlashCard key={vocab} vocab={words[vocab]} onCardClick={handleClick} />)
+            Object.keys(words).map(vocab => <FlashCard key={vocab} vocab={words[vocab]} onCardClick={handleClick} markColor={markColor}/>)
         }
     </section>
 }

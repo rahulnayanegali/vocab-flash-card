@@ -26,8 +26,8 @@ export default function FormFlashCard({ onSubmit }) {
     return (
         <form className={classes.form} onSubmit={handleSubmit}>
             <input type="text" placeholder="Word" name="name" spellCheck='true' className={classes.inputMeaning} value={word} onChange={(e) => { setWord(e.target.value) }} />
-            <input type="text" name="name" placeholder="Meaning" value={meaning} spellCheck='true' className={classes.inputMeaning} onChange={(e) => { setMeaning(e.target.value) }} />
-            <button type="submit" value="Add Flash Card" className={classes.button}>Add Flash Card</button>
+            <input type="text" name="name" placeholder="Meaning,Synonym" value={meaning} spellCheck='true' className={classes.inputMeaning} onChange={(e) => { setMeaning(e.target.value) }} />
+            <button type="submit" value="Add Flash Card" className={classes.button} >Add Flash Card</button>
         </form>
     )
 }
