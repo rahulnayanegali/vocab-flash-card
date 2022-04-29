@@ -6,12 +6,13 @@
     vertical-align: middle;
     min-height: 90%; 
     display:table;   
-    cursor: pointer;
+    
 }
 .vocab {
     display:table-cell; 
     vertical-align:middle;
     max-width: 250px;
+    position: relative;
 }
 
 .meaningParent {
@@ -49,11 +50,25 @@ section {
     text-transform: capitalize;
     align-items: baseline;
     margin-bottom: 16px;
-    margin-top: 3rem;
+    margin-top: 4rem;
+}
+
+.wordContainer > h1 {
+    cursor: pointer;
+}
+
+.checkbox > input {
+    cursor: pointer;
 }
 
 .speaker {
     width: 20px;
     cursor: pointer;
     height: max-content;
+}
+
+.toggle  {
+    position: absolute !important;
+    top: 1.2rem;
+    right: 5rem;
 }

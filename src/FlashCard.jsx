@@ -5,11 +5,13 @@ import classes from './FlashCard.module.css'
 // firebase 
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from './firebase'
+import ToggleButton from "./ToggleButton";
 
 
 function FlashCard({ vocab, onCardClick }) {
     const { speak } = useSpeechSynthesis();
     const { word, meaning, meanings } = vocab;
+    const [ checked, setChecked ] = useState(false);
 
     const handleCardClick = (e) => {
         e.preventDefault();
@@ -17,13 +19,19 @@ function FlashCard({ vocab, onCardClick }) {
             onCardClick(vocab);
         }
     }
+
+    const handleChecked = (event) => {
+        event.stopPropagation(); 
+        setChecked(!checked);
+    }
     return (
         <>
-            <div className={`${classes.card} ${classes.frontface}`} onClick={handleCardClick}>
-                <div className={classes.vocab}>
-                    <div className={classes.wordContainer}>
+            <div className={`${classes.card} ${classes.frontface}` } onClick={handleCardClick}>
+                <div className={classes.vocab} style={checked ? {backgroundColor: '#C3E5AE'} : {}}>
+                <div className={classes.toggle}><ToggleButton checked={checked} onChecked={handleChecked}   /></div>
+                    <div className={classes.wordContainer} >
                         <button className={classes.speakerBtn} onClick={() => speak({ text: word })}><img className={classes.speaker} src={window.location.origin + '/images/Speaker_Icon.svg'} /></button>
-                        <h1 >{word}</h1>
+                        <h1 >{word}</h1>                        
                     </div>
                     <p className={classes.meaningParent} style={vocab?.state ? { visibility: "unset" } : { visibility: "hidden" }}>
                         Meaning: <span className={classes.meaning}>
