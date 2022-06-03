@@ -10,8 +10,8 @@ export default function FormFlashCard({ onSubmit }) {
         e.preventDefault();
         if (!word.length) return alert('Word cannot be empty')
         if (!meaning.length) return alert('Meaning cannot be empty')
-        if (!word.match(letters)) return alert('Word must only be single alphapet');
-        if (!meaning.match(letters)) return alert('meaning must only be single alphapet');
+        // if (!word.match(letters)) return alert('Word must only be single alphapet');
+        // if (!meaning.match(letters)) return alert('meaning must only be single alphapet');
 
         const meanings = meaning.split(',').filter(meaning => meaning.length);
        
